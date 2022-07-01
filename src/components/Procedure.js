@@ -34,11 +34,11 @@ const Procedure = () => {
             disablePortal
             id="combo-box-demo"
             options={data}
-            getOptionLabel={(option) => option.billing_code + ' ' + option.name}
+            getOptionLabel={(option) => (option.billing_code + ' ' + option.name).trim() }
             onChange={(e, item)=> dispatch( setProcedure(item) ) }
             sx={{ width: '100%', marginTop: '20px', marginBottom: '20px' }}
             renderInput={(params) => <TextField {...params} label="Procedure" />}
-            value={ !_.isEmpty(calculateData.procedure) ?calculateData.procedure : {name:'',billing_code:''} }
+            value={ !_.isEmpty(calculateData.procedure) ? calculateData.procedure : {name:'',billing_code:''} }
         />     
     );
 }

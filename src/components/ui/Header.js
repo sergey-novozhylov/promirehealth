@@ -28,13 +28,13 @@ const Header = () => {
                     Promire Health
                 </Typography>
             </Grid>
-            <Grid item container direction="row" alignItems="center" justifyContent="center" width='100%'      
+            <Grid item container direction="row" alignItems="center" width='100%'      
                 sx={{  
                     height: '108px',
                     background: '#D5E7F6',
                 }} 
             >
-                <Grid item container md={2} justifyContent="center" alignItems="center">
+                <Grid item container xs={2} justifyContent="center" alignItems="center">
                     { (calculateData.step == 'STEP 2/3' || calculateData.step == 'STEP 3/3') && (
                         <Button onClick={() => history(-1)}
                             sx={{
@@ -47,7 +47,7 @@ const Header = () => {
                         ><ArrowBackIosNewIcon fontSize='18px' color='#595959' />back</Button>
                     )}
                 </Grid>
-                <Grid item container justifyContent="center" md={8}>
+                <Grid item container justifyContent="center" xs={8}>
                     <Typography sx={{
                         fontWeight: '400',
                         fontSize: '22px',
@@ -59,6 +59,7 @@ const Header = () => {
                         {calculateData.step}
                     </Typography>
                 </Grid>
+                {/* <Grid item container xs justifyContent="center" alignItems="center" /> */}
             </Grid>            
         </Grid>
     );
