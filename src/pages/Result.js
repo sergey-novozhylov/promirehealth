@@ -87,7 +87,7 @@ console.log(calculateData);
                 <Grid item container direction='column' alignContent="center" xs={4}>
                     <SelectedData />
                     <Grid item mt="24px">
-                        <CustomButton to="/search">Change</CustomButton>
+                        <CustomButton to="/search" dashes={false}>Change</CustomButton>
                     </Grid>
                 </Grid>                
                 <Grid item container direction="column" alignItems='center' mt={matchesSM ? '0' : '30px'}  xs={matchesMD ? 4 : 6}>

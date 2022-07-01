@@ -9,7 +9,8 @@ import {
         Select,
         Radio,
         RadioGroup,
-        FormControlLabel
+        FormControlLabel,
+        Typography
     } from '@mui/material';
 
 import { setZipCode, setRadius, setLatLon, setLocationType } from '../store/actions/calculate';
@@ -29,8 +30,32 @@ const Location = () => {
 
     const handleLocationTypeChange = (event) => {
         //setLocationType(event.target.value);
+        if ( event.target.value === 'location' )  {
+            getLocation();
+        }
         dispatch(setLocationType(event.target.value))
     };
+
+
+    const [lat, setLat] = useState(null);
+    const [lng, setLng] = useState(null);
+    const [status, setStatus] = useState(null);
+  
+    const getLocation = () => {
+      if (!navigator.geolocation) {
+        setStatus('Geolocation is not supported by your browser');
+      } else {
+        setStatus('Locating...');
+        navigator.geolocation.getCurrentPosition((position) => {
+          setStatus(null);
+          setLat(position.coords.latitude);
+          setLng(position.coords.longitude);
+          dispatch(setLatLon({lat: position.coords.latitude, lon: position.coords.longitude}));
+        }, () => {
+          setStatus('Unable to retrieve your location');
+        });
+      }
+    }
 
     const styles = {
         radio: {
@@ -71,12 +96,12 @@ const Location = () => {
                     />
                 </Grid>
             }
-            { (calculateData.location.locationType == 'location') &&      
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    console.log("Latitude is :", position.coords.latitude);
-                    console.log("Longitude is :", position.coords.longitude);
-                    dispatch(setLatLon({lat: position.coords.latitude, lon: position.coords.longitude}));
-                })
+            { (calculateData.location.locationType === 'location') &&      
+                <Grid item textAlign="center">
+                    <Typography variant='h3'>{status}</Typography>
+                    {lat && <Typography variant='h3'>Latitude: {lat}</Typography>}
+                    {lng && <Typography variant='h3'>Longitude: {lng}</Typography>}
+                </Grid>
             }            
             { calculateData.location.locationType && 
                 <Grid item mt="20px" mb="20px">

@@ -42,7 +42,7 @@ const Search = () => {
                 <Grid item container direction='column' alignContent="center" xs={4}>
                     <SelectedData clickHadler={setSearchField} />
                     <Grid item mt="24px">
-                        <CustomButton to="/result">See Results</CustomButton>
+                        <CustomButton to="/result" dashes={false}>See Results</CustomButton>
                     </Grid>
                 </Grid>                
                 <Grid item container direction="column" alignItems="center" mt={matchesSM ? '0' : '30px'} xs={matchesMD ? 4 : 6}>

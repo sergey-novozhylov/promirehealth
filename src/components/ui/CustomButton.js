@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-const CustomButton = ({children, to}) => {
+const CustomButton = ({children, to, dashes=true}) => {
     const styles = {
         button: {
             padding: '22px 20px',
@@ -15,6 +15,8 @@ const CustomButton = ({children, to}) => {
             lineHeight: '18px',
             letterSpacing: '0.18em',
             color: '#161616' ,
+        },
+        dashes: {
             '&::before':  {
                 borderTop: '1px solid !important',
                 width: '18px',
@@ -39,7 +41,10 @@ const CustomButton = ({children, to}) => {
         <Button   
             component={Link}    
             to={to} 
-            sx={styles.button} 
+            sx={[
+                styles.button,
+                dashes && styles.dashes
+            ]} 
         >
             {children}
         </Button>
