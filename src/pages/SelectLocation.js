@@ -6,6 +6,8 @@ import {
     } from '@mui/material';
 
 import _ from "lodash";
+import { useNavigate } from "react-router-dom";
+
 import { setStep } from '../store/actions/calculate';
 
 import CustomButton from '../components/ui/CustomButton';
@@ -15,6 +17,15 @@ import SelectedData from '../components/SelectedData';
 const SelectLocation = () => {    
     const calculateData = useSelector( state => state.calculate );    
     const dispatch = useDispatch();
+    
+    let navigate = useNavigate();
+
+    if ( _.isEmpty(calculateData.insuranceProvider) || 
+            _.isEmpty(calculateData.insurancePlan) ||
+            _.isEmpty(calculateData.procedure)
+    ) {
+        navigate("/", { replace: true });
+    }
 
     useEffect(() => {
         dispatch( setStep('STEP 3/3') );

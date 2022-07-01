@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Typography, Grid } from '@mui/material';
 import _ from "lodash";
+import { useNavigate } from "react-router-dom";
 
 import { setStep } from '../store/actions/calculate';
 
@@ -13,6 +14,12 @@ const SelectProcedure = () => {
 
     const calculateData = useSelector( state => state.calculate );
     const dispatch = useDispatch();
+
+    let navigate = useNavigate();
+
+    if ( _.isEmpty(calculateData.insuranceProvider) || _.isEmpty(calculateData.insurancePlan) ) {
+        navigate("/", { replace: true });
+    }
 
     useEffect(() => {
         dispatch( setStep('STEP 2/3') );
