@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { 
         TextField, 
@@ -19,6 +19,10 @@ const Location = () => {
     // const [locationType, setLocationType] = useState(null);
     const calculateData = useSelector( state => state.calculate );    
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        getLocation();
+    }, []);      
 
     const handleZipCodeChange = (event) => {
         dispatch(setZipCode(event.target.value));
