@@ -12,6 +12,7 @@ import CustomButton from '../components/ui/CustomButton';
 import SelectedData from '../components/SelectedData';
 import Loading from '../components/ui/Loading';
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Result = () => {
     const [data,setData] = useState([]);
@@ -21,11 +22,14 @@ const Result = () => {
     const calculateData = useSelector( state => state.calculate );    
     const dispatch = useDispatch();
 
+    const matchesMD = useMediaQuery('(min-width:1000px)');
+    const matchesSM = useMediaQuery('(min-width:650px)');
+console.log(calculateData);
     let navigate = useNavigate();
     if ( _.isEmpty(calculateData.insuranceProvider) || 
             _.isEmpty(calculateData.insurancePlan) ||
             _.isEmpty(calculateData.procedure) ||
-            (_.isEmpty(calculateData.location.zipCode) && _.isEmpty(calculateData.location.lat))
+            ( !calculateData.location.zipCode && !calculateData.location.lat)
     ) {
         navigate("/", { replace: true });
     }
@@ -78,7 +82,7 @@ const Result = () => {
 
     return (
         <>
-            <Grid item container direction="row" alignItems="flex-start" mt="60px">
+            <Grid item container direction={matchesSM ? "row" : "column"} alignItems="flex-start" mt="60px">
 
                 <Grid item container direction='column' alignContent="center" xs={4}>
                     <SelectedData />
@@ -86,13 +90,13 @@ const Result = () => {
                         <CustomButton to="/search">Change</CustomButton>
                     </Grid>
                 </Grid>                
-                <Grid item container direction="column" xs={8}>
-                    <Grid item container direction="row">
-                        <Grid item container alignItems='center' md >
-                            {isLoading ? <Loading/> : <Typography variant='h3' sx={{fontSize:'16px'}}>{res.length} results found</Typography>}
+                <Grid item container direction="column" alignItems='center' mt={matchesSM ? '0' : '30px'}  xs={matchesMD ? 4 : 6}>
+                    <Grid item container direction="row" alignItems='center' width={matchesSM ? '100%' : '80%'}>
+                        <Grid item container  textAlign='left' xs >
+                            {isLoading ? <Loading/> : <Typography variant='h3' sx={{fontSize:'16px'}}>{data.length} results found</Typography>}
                         </Grid>
-                        {res.length>0 &&                         
-                        <Grid item md>
+                        {data.length>0 &&                         
+                        <Grid item xs textAlign='right'>
                             <Button
                                 id="basic-button"
                                 aria-controls={open ? 'basic-menu' : undefined}
@@ -118,7 +122,9 @@ const Result = () => {
                         </Grid>       
                         }                 
                     </Grid>
-                    {res.map( (item) => <ItemView key={item.name} item={item} /> )}
+                    <Grid item container width={matchesSM ? '100%' : '80%'}>
+                        {data.map( (item) => <ItemView key={item.name} item={item} /> )}
+                    </Grid>
                 </Grid>
             </Grid>
         </>

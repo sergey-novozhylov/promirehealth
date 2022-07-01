@@ -9,10 +9,9 @@ const Header = () => {
     const history = useNavigate();
 
     return (   
-        <Grid container direction='column'>
-            <Grid container alignItems="center" justifyContent="center"       
+        <Grid container direction='column' width='100%'>
+            <Grid container alignItems="center" justifyContent="center" width='100%'     
                 sx={{  
-                    width: '100vw',
                     height: '60px',
                     background: '#595959',
                 }} 
@@ -29,9 +28,8 @@ const Header = () => {
                     Promire Health
                 </Typography>
             </Grid>
-            <Grid item container alignItems="center" justifyContent="center"       
+            <Grid item container direction="row" alignItems="center" justifyContent="center" width='100%'      
                 sx={{  
-                    width: '100vw',
                     height: '108px',
                     background: '#D5E7F6',
                 }} 
@@ -61,7 +59,6 @@ const Header = () => {
                         {calculateData.step}
                     </Typography>
                 </Grid>
-                <Grid item md={2}></Grid>
             </Grid>            
         </Grid>
     );

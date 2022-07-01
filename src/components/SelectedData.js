@@ -26,7 +26,7 @@ const SeletedData = ({ clickHadler=()=>{} }) => {
                 <Typography variant='h3'>{calculateData?.procedure.name}</Typography>
             </Grid>
             )}
-            { !_.isEmpty(calculateData.location.zipCode) && (
+            { (!_.isEmpty(calculateData.location.zipCode) || calculateData.location.lat) && (
                 <Grid item mt="24px" onClick={()=> clickHadler('location')}>
                     <Typography variant='h5'>Location</Typography>
                     <Typography variant='h3'>

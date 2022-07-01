@@ -36,7 +36,7 @@ const Procedure = () => {
             options={data}
             getOptionLabel={(option) => option.billing_code + ' ' + option.name}
             onChange={(e, item)=> dispatch( setProcedure(item) ) }
-            sx={{ width: 500, marginTop: '20px', marginBottom: '20px' }}
+            sx={{ width: '100%', marginTop: '20px', marginBottom: '20px' }}
             renderInput={(params) => <TextField {...params} label="Procedure" />}
             value={ !_.isEmpty(calculateData.procedure) ?calculateData.procedure : {name:'',billing_code:''} }
         />     

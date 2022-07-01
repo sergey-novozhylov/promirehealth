@@ -8,10 +8,14 @@ import { setStep } from '../store/actions/calculate';
 import CustomButton from '../components/ui/CustomButton';
 import Insurance from '../components/Insurance';
 import SelectedData from '../components/SelectedData';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const SelectInsurance = () => {
     const dispatch = useDispatch();
     const calculateData = useSelector( state => state.calculate );    
+    
+    const matchesMD = useMediaQuery('(min-width:1000px)');
+    const matchesSM = useMediaQuery('(min-width:650px)');
 
     useEffect(() => {
         localStorage.clear();
@@ -23,12 +27,12 @@ const SelectInsurance = () => {
             <Grid item container justifyContent="center">
                 <Typography variant="h3">Select your health insurance provider and plan</Typography>
             </Grid> 
-            <Grid item container direction="row" alignItems="flex-start" mt="60px">
-                <Grid item container direction='column' alignContent="center" md={4}>
+            <Grid item container direction={matchesSM ? "row" : "column"} alignItems="flex-start" mt="60px">
+                <Grid item container direction='column' alignContent="center" xs={4}>
                     <SelectedData />
                 </Grid>              
-                <Grid item container direction="column" alignItems="center" md={4}> 
-                    <Grid item >
+                <Grid item container mt={matchesSM ? '0' : '30px'} direction="column" alignItems="center" xs={matchesMD ? 4 : 6}> 
+                    <Grid item width={matchesSM ? '100%' : '80%'}>
                         <Insurance/>
                     </Grid>
                     <Grid item>

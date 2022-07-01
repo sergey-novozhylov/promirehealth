@@ -43,7 +43,7 @@ const Location = () => {
 
     return (
         <>
-            <Grid item>
+            <Grid item container justifyContent='center'>
                 <FormControl color="#ffffff">
                     <RadioGroup
                         row
@@ -67,7 +67,7 @@ const Location = () => {
                         defaultValue={calculateData.location.zipCode}
                         onChange={handleZipCodeChange}
                         fullWidth
-                        sx={{width:'500px'}}
+                        sx={{width:'100%'}}
                     />
                 </Grid>
             }
@@ -80,8 +80,8 @@ const Location = () => {
             }            
             { calculateData.location.locationType && 
                 <Grid item mt="20px" mb="20px">
-                    <FormControl sx={{width:'500px'}}>
-                        <InputLabel width='500px' id="demo-simple-select-label">Choose radius up to 100 miles</InputLabel>
+                    <FormControl sx={{width:'100%'}}>
+                        <InputLabel width='100%' id="demo-simple-select-label">Choose radius up to 100 miles</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"

@@ -49,7 +49,7 @@ const Insurance = () => {
                     options={data}
                     getOptionLabel={(option) => option.name}
                     onChange={(e, item)=> handleInsuranceProviderChange(item)}
-                    sx={{ width: 500, marginTop: '20px', marginBottom: '20px' }}
+                    sx={{ width: '100%', marginTop: '20px', marginBottom: '20px' }}
                     renderInput={(params) => <TextField {...params} label="Insurance" />}
                     value={!_.isEmpty(calculateData.insuranceProvider) ? calculateData.insuranceProvider : {name:''} }
                     // isOptionEqualToValue={(option, value) => option.code === value}
@@ -63,7 +63,7 @@ const Insurance = () => {
                         options={calculateData.insuranceProvider?.plans}
                         getOptionLabel={(option) => option.name}
                         onChange={(e, item)=> handleInsurancePlanChange(item)}
-                        sx={{ width: 500, marginTop: '20px', marginBottom: '20px' }}
+                        sx={{ width: '100%', marginTop: '20px', marginBottom: '20px' }}
                         renderInput={(params) => <TextField  {...params} label="Insurance Plan" />}
                         value={!_.isEmpty(calculateData.insuranceProvider) ? calculateData.insurancePlan : {name:''} }
                         // isOptionEqualToValue={(option, value) => option.code === value}

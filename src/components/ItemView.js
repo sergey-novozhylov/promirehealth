@@ -22,7 +22,7 @@ const styles = {
     },
     gridContainer: {
         border: '1px solid #BBBBBB', 
-        width: '60%',
+        width: '100%',
         padding: '17.5px 16px 17.5px 16px'        
     }
 }
