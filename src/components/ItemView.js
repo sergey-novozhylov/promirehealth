@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Typography, Grid, Button } from '@mui/material';
 
 import ItemDetails from './ItemDetails';
+import DirectionsIcon from '@mui/icons-material/Directions';
 
 const styles = {
     title: {
@@ -40,8 +41,9 @@ const ItemView = ({item}) => {
                 <Grid item>
                     <a href={'https://maps.google.com/?q=' + item.address} style={styles.address} target='_blank' rel="noreferrer">{item.address}</a>
                 </Grid>            
-                <Grid item>
+                <Grid item container direction='row'>
                     <Typography>{Math.round(item.distance)} miles</Typography>
+                    <a href={'https://maps.google.com/?q=' + item.address} style={{...styles.address, color:'#000000'}} target='_blank' rel="noreferrer"><DirectionsIcon fontSize='small' color='#000000' /></a>
                 </Grid>
             </Grid>
             <Grid item container direction="column" xs>

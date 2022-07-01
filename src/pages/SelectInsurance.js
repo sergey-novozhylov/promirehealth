@@ -9,13 +9,12 @@ import CustomButton from '../components/ui/CustomButton';
 import Insurance from '../components/Insurance';
 import SelectedData from '../components/SelectedData';
 
-localStorage.clear();
-
 const SelectInsurance = () => {
     const dispatch = useDispatch();
     const calculateData = useSelector( state => state.calculate );    
 
     useEffect(() => {
+        localStorage.clear();
         dispatch( setStep('STEP 1/3') );
     },[]);  
 

@@ -32,6 +32,15 @@ const Location = () => {
         dispatch(setLocationType(event.target.value))
     };
 
+    const styles = {
+        radio: {
+            color: '#000000',
+            '&.Mui-checked': {
+            color: '#000000',
+            },            
+        }
+    }
+
     return (
         <>
             <Grid item>
@@ -41,10 +50,10 @@ const Location = () => {
                         aria-labelledby="demo-row-radio-buttons-group-label"
                         name="row-radio-buttons-group"
                         value={calculateData.location.locationType}
-                        onChange={handleLocationTypeChange}                        
+                        onChange={handleLocationTypeChange} 
                     >
-                        <FormControlLabel value="zipcode" control={<Radio />} label="By Zip Code" />
-                        <FormControlLabel value="location"  control={<Radio />} label="By Location" />
+                        <FormControlLabel value="zipcode" control={<Radio sx={styles.radio} />} label="Zip Code" />
+                        <FormControlLabel value="location" control={<Radio sx={styles.radio} />} label="Location" />
                     </RadioGroup>
                 </FormControl>     
             </Grid>                       

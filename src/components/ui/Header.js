@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Grid, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { useNavigate, Link } from "react-router-dom";
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 const Header = () => {
     const calculateData = useSelector( state => state.calculate );
@@ -35,7 +36,7 @@ const Header = () => {
                     background: '#D5E7F6',
                 }} 
             >
-                <Grid item container md={2} justifyContent="center">
+                <Grid item container md={2} justifyContent="center" alignItems="center">
                     { (calculateData.step == 'STEP 2/3' || calculateData.step == 'STEP 3/3') && (
                         <Button onClick={() => history(-1)}
                             sx={{
@@ -45,7 +46,7 @@ const Header = () => {
                                 color: '#595959',
                                 textTransform: 'lowercase',
                             }}
-                        >back</Button>
+                        ><ArrowBackIosNewIcon fontSize='18px' color='#595959' />back</Button>
                     )}
                 </Grid>
                 <Grid item container justifyContent="center" md={8}>

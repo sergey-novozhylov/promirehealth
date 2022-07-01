@@ -11,6 +11,7 @@ import res from './res';
 import CustomButton from '../components/ui/CustomButton';
 import SelectedData from '../components/SelectedData';
 import Loading from '../components/ui/Loading';
+import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 
 const Result = () => {
     const [data,setData] = useState([]);
@@ -98,8 +99,9 @@ const Result = () => {
                                 aria-haspopup="true"
                                 aria-expanded={open ? 'true' : undefined}
                                 onClick={handleClick}
+                                sx={{color:'#000000'}}
                             >
-                                {sortFilter}
+                                {sortFilter}<UnfoldMoreIcon fontSize='small'/>
                             </Button>
                             <Menu
                                 id="basic-menu"
