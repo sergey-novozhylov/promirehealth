@@ -40,7 +40,7 @@ const Search = () => {
         <>
             <Grid item container direction={matchesSM ? "row" : "column"} alignItems="flex-start" mt="60px">
                 <Grid item container direction='column' alignContent="center" xs={4}>
-                    <SelectedData clickHadler={setSearchField} />
+                    <SelectedData clickHadler={setSearchField} searchField={searchField} />
                     <Grid item mt="24px">
                         <CustomButton to="/result" dashes={false}>See Results</CustomButton>
                     </Grid>
