@@ -40,9 +40,6 @@ const Location = () => {
         dispatch(setLocationType(event.target.value))
     };
 
-
-    const [lat, setLat] = useState(null);
-    const [lng, setLng] = useState(null);
     const [status, setStatus] = useState(null);
   
     const getLocation = () => {
@@ -51,9 +48,7 @@ const Location = () => {
       } else {
         setStatus('Locating...');
         navigator.geolocation.getCurrentPosition((position) => {
-          setStatus(null);
-          setLat(position.coords.latitude);
-          setLng(position.coords.longitude);
+          setStatus('Your location is determined');
           dispatch(setLatLon({lat: position.coords.latitude, lon: position.coords.longitude}));
         }, () => {
           setStatus('Unable to retrieve your location');
@@ -103,8 +98,6 @@ const Location = () => {
             { (calculateData.location.locationType === 'location') &&      
                 <Grid item textAlign="center">
                     <Typography variant='h3'>{status}</Typography>
-                    {lat && <Typography variant='h3'>Latitude: {lat}</Typography>}
-                    {lng && <Typography variant='h3'>Longitude: {lng}</Typography>}
                 </Grid>
             }            
             { calculateData.location.locationType && 

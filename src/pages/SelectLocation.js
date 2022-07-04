@@ -51,8 +51,8 @@ const SelectLocation = () => {
                     </Grid>
                     <Grid item mt='10px'>
                         { ( 
-                            (!_.isEmpty(calculateData.location.zipCode) && calculateData.location.locationType=='zipcode' )
-                                || ( calculateData.location.lat && calculateData.location.locationType=='location' ) ) &&
+                            (!_.isEmpty(calculateData.location.zipCode) && calculateData.location.locationType==='zipcode' )
+                                || ( calculateData.location.lat && calculateData.location.locationType==='location' ) ) &&
                             <CustomButton to="/result">See Results</CustomButton>
                         }                
                     </Grid>                

@@ -44,8 +44,10 @@ console.log(calculateData);
                 issuer_id: calculateData?.insuranceProvider.id,
                 plan_id: calculateData?.insurancePlan.id, 
             };
-            if (calculateData.location.locationType == 'location' ) {
-                params = {...params, lat: calculateData?.location.lat ,lng: calculateData?.location.lon, postal_code:null}
+            if (calculateData.location.locationType === 'location' && calculateData.location.lat  ) {
+                params = {...params, lat: calculateData?.location.lat ,lng: calculateData?.location.lon}
+            } else if (calculateData.location.locationType === 'location') {
+                params = {...params, postal_code:'30005'}
             }
 
             const result = await axios.get(
