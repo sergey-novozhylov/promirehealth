@@ -43,6 +43,7 @@ console.log(calculateData);
                 radius: calculateData?.location.radius,
                 issuer_id: calculateData?.insuranceProvider.id,
                 plan_id: calculateData?.insurancePlan.id, 
+                plan_name: calculateData?.insurancePlan.name,
             };
             if (calculateData.location.locationType === 'location' && calculateData.location.lat  ) {
                 params = {...params, lat: calculateData?.location.lat ,lng: calculateData?.location.lon}
