@@ -6,6 +6,8 @@ import _ from 'lodash';
 
 import { setProcedure } from '../store/actions/calculate';
 
+import result2 from '../procedure_codes';
+
 import Loading from '../components/ui/Loading';
 
 
@@ -15,17 +17,17 @@ const Procedure = () => {
     const calculateData = useSelector( state => state.calculate );
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        async function fetchData() {    
-            const result = await axios(
-                    'https://api.promirehealth.com/billing_codes',
-            );
-            setData(result.data);
-        }
-        fetchData();
-    },[]);  
-
-    if (! data ) {
+    // useEffect(() => {
+    //     async function fetchData() {    
+    //         const result = await axios(
+    //                 'https://api.promirehealth.com/billing_codes',
+    //         );
+    //         setData(result.data);
+    //     }
+    //     fetchData();
+    // },[]);  
+    
+    if (! result2 ) {
         return <Loading/>
     }
 
@@ -33,12 +35,13 @@ const Procedure = () => {
         <Autocomplete
             disablePortal
             id="combo-box-demo"
-            options={data}
-            getOptionLabel={(option) => (option.billing_code + ' ' + option.name).trim() }
+            options={result2}
+            // getOptionLabel={(option) => (option.billing_code + ' ' + option.name).trim() }
+            getOptionLabel={(option) => (option.Code + ' ' + option.Description).trim() }
             onChange={(e, item)=> dispatch( setProcedure(item) ) }
             sx={{ width: '100%', marginTop: '20px', marginBottom: '20px' }}
             renderInput={(params) => <TextField {...params} label="Procedure" />}
-            value={ !_.isEmpty(calculateData.procedure) ? calculateData.procedure : {name:'',billing_code:''} }
+            value={ !_.isEmpty(calculateData.procedure) ? calculateData.procedure : {Code:'',Description:''} }
         />     
     );
 }

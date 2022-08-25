@@ -38,7 +38,7 @@ console.log(calculateData);
         dispatch( setStep('RESULTS') );
         async function fetchData() {
             let params = {
-                billing_code: calculateData?.procedure.billing_code,
+                billing_code: calculateData?.procedure.Code,
                 postal_code: calculateData?.location.zipCode,
                 radius: calculateData?.location.radius,
                 issuer_id: calculateData?.insuranceProvider.id,

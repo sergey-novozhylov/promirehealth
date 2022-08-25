@@ -23,7 +23,7 @@ const SeletedData = ({ clickHadler=()=>{}, searchField=false }) => {
             { (!_.isEmpty(calculateData.procedure) || searchField) && (
             <Grid item mt="24px" onClick={()=> clickHadler('procedure')}>
                 <Typography variant='h5'>Procedure</Typography>
-                <Typography variant='h3' sx={{ color: (searchField && searchField!=='procedure') ? '#888484' : '#161616' }}>{calculateData?.procedure?.billing_code}:{calculateData?.procedure?.name}</Typography>
+                <Typography variant='h3' sx={{ color: (searchField && searchField!=='procedure') ? '#888484' : '#161616' }}>{calculateData?.procedure?.Code}:{calculateData?.procedure?.Description}</Typography>
             </Grid>
             )}
             { ( ((calculateData.location.zipCode && calculateData.location.locationType==='zipcode') || 
